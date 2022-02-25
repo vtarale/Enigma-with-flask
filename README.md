@@ -1,6 +1,8 @@
 # Enigma-with-flask
 Enigma with python, JavaScript, CSS, html
-# Still writing
+## How to run
+    go to the respective directory
+    flask run
 ## To know the history and more about enigma
 ### Wikipedia
 [wikipedia](https://en.wikipedia.org/wiki/Enigma_machine)
