@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale = 1, width=device-width">
+        <title>Enigma</title>
+        <style>
+            .b{
+                text-align: center;
+                background-color: khaki;
+                padding: 1%; 
+                margin: 1%;
+            }
+            h1 {
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+            }
+            h2 {
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+            }
+            .div_input{
+                text-align: center;
+                background-color: honeydew;
+                padding: 1%;
+            }
+            button {
+                width: 50%;
+                font-family: 'Courier New', Courier, monospace;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                margin: 8px 0;
+                background-color: lightcoral;
+                color: bisque;
+            }
+            input {
+                width: 50%;
+                font-family: 'Courier New', Courier, monospace;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                margin: 8px 0;
+                color: black;
+            }
+        </style>
+    </head>
+    <body class="b">
+        <h1>Welcome to Enigma(An text encrypter)</h1><br>
+        <h1>Caution</h1><br>
+        <h2>Don't use spaces in the messages</h2>
+        <div class="div_input">
+            <input id="in" autocomplete="off" autocapitalize="off" name="input" placeholder="Message" type="text">
+            <br>
+            <button id="but" disabled>ENCRYPT</button>
+        </div>
+        <br>
+        <label id="lab"></label>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const input = document.querySelector('#in');
+                const button = document.querySelector('#but');
+                input.addEventListener('keyup', function() {
+                    if (input.value) {
+                        button.disabled = false;
+                    } else {
+                        button.disabled = true;
+                    }
+                });
+                button.addEventListener('click', async function() {
+                    let get = await fetch("/get?message=" + input.value);
+                    let response = await get.json();
+                    document.querySelector('#lab').innerHTML = response;
+                });
+            });
+        </script>
+    </body>
+</html>
